@@ -1,0 +1,98 @@
+﻿@page
+@model BooksModel
+@{
+}
+
+<div class="jumbotron d-flex py-4 justify-content-between">
+    <div>
+        <h1 class="display-4">Books store</h1>
+        <p class="small text-black-50">Page for displaying books</p>
+
+    </div>
+    <div class="d-flex align-items-center">
+        <a asp-page="./Create" class="d-flex align-items-center gap-2 btn btn-outline-primary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+            <span>
+                Add new one
+
+            </span>
+        </a>
+    </div>
+
+</div>
+
+    <div class="d-flex justify-content-between pb-3">
+        <div>
+            <h6 class="display-6">Order by</h6>
+
+            <form method="get">
+                    
+                <select class="form-select" onchange="this.form.submit()" asp-for="SortBy">
+                        <option value="name">
+                            Name
+                        </option>
+                        <option value="author">
+                            Author
+                        </option>
+
+                        <option value="genre">
+                            Genre
+                        </option>
+                    </select>
+             </form>
+        </div>
+        <div>
+            <form method="get">
+                <div class="form-group pb-1">
+                    <label class="display-6 pb-1" asp-for="Query"></label>
+                    <input asp-for="Query" class="form-control" />
+                </div>
+                <div class="form-group d-flex justify-content-end">
+                    <input class="btn btn-outline-success btn-sm" type="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<div class="container">
+    @foreach (var book in Model.Books)
+    {
+        <div class="row mb-4 " >
+            <div class="col-md-3 col-sm-12 d-flex align-items-center justify-content-center">
+                <img src="@book.ThumbnailUrl" class="img-thumbnail" alt="Book Thumbnail" />
+            </div>
+            <div class="col-md-9 col-sm-12">
+                <small class="text-muted small"><a asp-route-id="@book.CategoryId" asp-page="/Categories/Details">@book.CategoryName</a></small>
+                <h2 class="display-6">@book.Title</h2>
+                <p>@book.Description</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p>
+                            Written by <span class="text-decoration-underline">@book.Author</span>
+                        </p>
+                        <small class="text-muted small">
+                            @if (book.Price != null)
+                            {
+                                <span>$@String.Format("{0:N2}", book.Price)</span>
+
+                            } else
+                            {
+                                <span>No price information</span>    
+                            }
+
+                        </small>
+                    </div>
+                    <a asp-page="/Books/Details" class="btn btn-primary btn-sm text-center" asp-route-id=@book.Id>
+                        More info
+                    </a>
+                </div>
+
+            </div>
+            <div>
+            </div>
+
+
+        </div>
+    }
+</div>

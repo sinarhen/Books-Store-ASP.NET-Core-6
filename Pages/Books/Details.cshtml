@@ -1,0 +1,48 @@
+﻿@page
+@model DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<a asp-page="./Index">Back to List</a>
+
+<h1 class="display-4">Details</h1>
+
+<div class="row mb-4">
+    <div class="col-md-3 col-sm-12">
+        <img src="@Model.Book.ThumbnailUrl" class="img-thumbnail w-100 h-100" alt="Book Thumbnail" />
+    </div>
+    <div class="col-md-9 col-sm-12">
+        <h2 class="display-6">@Model.Book.Title</h2>
+        <p>@Model.Book.Description</p>
+        <div class="d-flex w-auto h-auto justify-content-between">
+            <p>
+                Written by <span class="text-decoration-underline">@Model.Book.Author</span>
+            </p>
+            <small class="text-muted small">
+                @if (Model.Book.Price != null)
+                {
+                    <span>$@String.Format("{0:N2}", Model.Book.Price)</span>
+
+                }
+                else
+                {
+                    <span>No price information</span>
+                }
+
+            </small>
+
+        </div>
+
+
+    </div>
+    <div>
+    </div>
+
+
+</div>
+
+<div>
+    <a class="btn btn-outline-primary btn-sm" asp-page="./Edit" asp-route-id="@Model.Book?.Id">Edit</a>
+</div>

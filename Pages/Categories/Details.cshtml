@@ -1,0 +1,44 @@
+﻿@page
+@model Categories.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<a asp-page="./Index">Back to List</a>
+
+<h1 class="display-4">Details</h1>
+
+<div class="row mb-4">
+    <div class="col-md-9 col-sm-12">
+        <h2 class="display-6">@Model.Category.Name</h2>
+        <p>@Model.Category.Description</p>
+    </div>
+    <div>
+    </div>
+
+
+</div>
+
+<div>
+    <a class="btn btn-outline-primary btn-sm" asp-page="./Edit" asp-route-id="@Model.Category?.Id">Edit</a>
+    <a class="btn btn-outline-danger btn-sm" asp-page="./Delete" asp-route-id="@Model.Category?.Id">Delete</a>
+</div>
+
+<hr class="my-4" />
+
+<h1 class="display-4"></h1>
+
+<div class="row">
+    @foreach (var book in Model.Books)
+    {
+        <div class="card col-12 col-md-6 col-lg-3" style="width: 18rem;">
+            <img class="card-img-top img-thumbnail" src=@book.ThumbnailUrl alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title display-6">@book.Title</h5>
+                <p class="card-text text-truncate"> @book.Description</p>
+                <a asp-page="../Books/Details" asp-route-id=@book.Id class="btn btn-primary btn-sm">More info</a>
+            </div>
+        </div>
+    }
+</div>

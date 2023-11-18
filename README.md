@@ -55,5 +55,5 @@ In Details page, you can easily delete the book item
 ![ezgif com-video-to-gif (23)](https://github.com/sinarhen/Books-Store-ASP.NET-Core-6/assets/105736826/b7850e15-ecc7-4906-8837-f9eefb512b6b)
 
 
-### Database structure 
-(In progress...)
+## Database structure 
+![image](https://github.com/sinarhen/Books-Store-ASP.NET-Core-6/assets/105736826/309d8a48-8ebc-4952-a08a-98e83838fe79)

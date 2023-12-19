@@ -1,4 +1,6 @@
 # Books-Store-ASP.NET-Core-6
+**!important**: *This project does not pretend to be a skill demonstration or any kind of accomplishment. This was only made for studying purposes.*
+
 ASP.NET Core 6 application to browse different books by categories made with Razor Pages, Bootstrap, MS SQL
 
 ## Books page 
